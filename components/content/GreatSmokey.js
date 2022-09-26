@@ -4,7 +4,8 @@ import styled from 'styled-components'
 function GreatSmokey(props) {
     return (
         <section className="pb-12">
-            Hello
+            Great Smokey.
+            NPS API sucks.
         </section>
 
     )}
