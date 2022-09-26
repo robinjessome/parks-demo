@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Title from "../components/content/Title";
 import IntroBlock from '../components/content/IntroBlock';
 import Grid from "../components/content/Grid";
-// import { useParallax } from 'react-scroll-parallax';
+import GreatSmokey from "../components/content/GreatSmokey";
 
 function Home(props) {
 
@@ -28,6 +28,8 @@ function Home(props) {
           <p>Keep scrolling to explore some of the most popular National Parks!</p>
         </Grid>
 
+        <GreatSmokey />
+
 
 
       <div className="h-[2000px] bg-slate-500"></div>
@@ -38,6 +40,50 @@ function Home(props) {
 
 
 export async function getStaticProps() {
+
+  // PARKS
+
+/*
+
+Great Smokey Mountains : grsm
+Zion National Park : zion
+Yellowstone : yell
+Grand Canyon : grca
+Rockey Mountain National Park: romo
+Acadia National Park : acad
+Grand Teton National Park : grte
+Yosemite National Park : yose
+Indiana Dunes National Park : indu
+Glacier National Park : glac
+Joshua Tree National Park : jotr
+
+++
+
+Everglades National Park : ever
+Hawaii Volcanoes : havo
+Petrified Forest : pefo
+
+*/
+
+  const parksKey = '&api_key=' + process.env.PARKS_API_KEY;
+  const parkIds = '?parkCode=grsm,zion'
+  const parksUrl = 'https://developer.nps.gov/api/v1/parks'
+
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+
+    
+
+  const fetchParks  = await fetch(parksUrl + parkIds + parksKey, {
+    headers: {'Content-Type': 'application/json', }
+  })
+  const parksData = await fetchParks.text()
+
+  console.log(parksUrl + parkIds + parksKey)
+  console.log(fetchParks.status)
+  console.log(parksData)
 
   // IMAGES
 

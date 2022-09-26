@@ -14,8 +14,6 @@ const MainGridImage = styled(ParallaxBanner)`
 
 function Grid(props) {
 
-    console.log(props.data);
-
     return (
         <section className="grid grid-rows-6 grid-cols-2 grid-flow-col">
 
