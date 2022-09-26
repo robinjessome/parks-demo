@@ -8,7 +8,7 @@ export default function Document() {
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
             <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;700;900&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet" />
         </Head>
-        <body className="bg-slate-100 font-light font-sans antialiased">
+        <body className="bg-slate-100 font-light font-sans antialiased overflow-x-hidden">
             <Main />
             <NextScript />
         </body>

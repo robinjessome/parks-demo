@@ -6,15 +6,13 @@ const Block = styled(Parallax)``;
 // const Block = styled.div``;
 
 
-function FloatingBlock(props) {
+function IntroBlock(props) {
 
     return (
-        <section>
+        <section className="pb-12">
             <Block 
-                className="w-[94%] md:w-2/3 lg:w-1/2 bg-white shadow-lg rounded-lg mx-auto p-8 text-xl font-serif -translate-y-10"
+                className="w-[94%] md:w-2/3 max-w-4xl bg-white shadow-lg rounded-lg mx-auto p-8 text-2xl font-serif -translate-y-10 relative z-50"
                 speed={12}
-                // startScroll={0}
-                // endScroll={800} 
             >
                 {props.children}
             </Block>
@@ -24,4 +22,4 @@ function FloatingBlock(props) {
 
 }
 
-export default FloatingBlock;
+export default IntroBlock;
