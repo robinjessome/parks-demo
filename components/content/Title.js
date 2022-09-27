@@ -21,9 +21,10 @@ const HeadlineBase = styled.h1`
     text-shadow: 0 8px 33px rgba(0,0,0,0.25);
     font-size: 220px;
     font-weight: 700;
-    line-height: 1;
+    line-height: 0.9;
     text-align: center;
     margin-bottom: 150px;
+    max-width: 1200px;
 `;
 
 const ScrollIndicator = styled(Parallax)``;

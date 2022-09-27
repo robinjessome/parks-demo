@@ -32,7 +32,7 @@ function InfoPop(props) {
   
           {/* {!open && ( */}
             <Popover.Button
-            className={`flex items-center bg-white border border-white border-opacity-50  hover:bg-opacity-100 px-4 py-2 rounded-full  hover:shadow-xl transition ${open ? "bg-opacity-100 shadow-xl" : "shadow bg-opacity-40"}`}
+            className={`flex items-center bg-white border border-white border-opacity-50  hover:bg-opacity-100 px-3 py-1 rounded-full  hover:shadow-xl transition ${open ? "bg-opacity-100 shadow-xl" : "shadow bg-opacity-40"}`}
           >
               {!open && (
                   <>

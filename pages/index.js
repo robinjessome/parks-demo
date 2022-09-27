@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Head from 'next/head'
 import Title from "../components/content/Title";
 import IntroBlock from '../components/content/IntroBlock';
@@ -28,11 +29,11 @@ function Home(props) {
           <p>Keep scrolling to explore some of the most popular National Parks!</p>
         </Grid>
 
-        <GreatSmokey />
+        <GreatSmokey data={props.allParks.data[0]} images={props.grsmImages} />
 
 
 
-      <div className="h-[2000px] bg-slate-500"></div>
+      <div className="h-[2000px]"></div>
       </main>
     </div>
   )
@@ -69,21 +70,13 @@ Petrified Forest : pefo
   const parkIds = '?parkCode=grsm,zion'
   const parksUrl = 'https://developer.nps.gov/api/v1/parks'
 
-  var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-  };
+  const allParks = await axios.get(parksUrl + parkIds + parksKey)
+    .then(res => {
+      return res.data;
+    })
 
-    
 
-  const fetchParks  = await fetch(parksUrl + parkIds + parksKey, {
-    headers: {'Content-Type': 'application/json', }
-  })
-  const parksData = await fetchParks.text()
 
-  console.log(parksUrl + parkIds + parksKey)
-  console.log(fetchParks.status)
-  console.log(parksData)
 
   // IMAGES
 
@@ -106,85 +99,135 @@ Petrified Forest : pefo
     'creditUrl': bgHeroImageData.user.links.html,
   }
 
+
+
+/* BULK IMAGE FUNCTIONS */
+
+async function getImage(id) {
+
+  const imageDataJson = await axios.get(unsplashUrl + id + unsplashKey)
+  .then(res => {
+    return res.data;
+  })
+
+  let imageData = {
+    'url': imageDataJson.urls.raw,
+    'alt': imageDataJson.alt_description,
+    'creditName': imageDataJson.user.name,
+    'creditUrl': imageDataJson.user.links.html,
+  }
+
+  // return axios.get(
+  //   `${baseUrl}?app_id=${hereAppId}&app_code=${hereAppCode}&searchtext=${name}`
+  // );
+  return imageData
+}
+
+async function getImages(ids) {
+  const withCoords = await Promise.all(ids.map(id => getImage(id)));
+  console.log('in async function');
+  return withCoords;
+}
+
+
+
+
   // Grid 
 
-  let gridImages = [];
+  const gridImageIds = [
+    'ICXB0_EV0KY', // Grand Canyon
+    '9SspnXLUOLg', // Joshua Tree
+    'GRaB7A1vzgA', // Yosemite
+    'Ge9gn7eU054' // Yellowstone
+  ]
 
-  // grand canyon  
-  const gridImage1Id = 'ICXB0_EV0KY'
+  const gridImages = await getImages(gridImageIds).then(res => res);
+
+//   let gridImages = [];
+
+//   // grand canyon  
+//   const gridImage1Id = 'ICXB0_EV0KY'
   
-  const fetchGridImage1  = await fetch(unsplashUrl + gridImage1Id + unsplashKey);
-  const gridImage1Data = await fetchGridImage1.json()
+//   const fetchGridImage1  = await fetch(unsplashUrl + gridImage1Id + unsplashKey);
+//   const gridImage1Data = await fetchGridImage1.json()
 
-  let gridImage1 = {
-    'url': gridImage1Data.urls.raw,
-    'alt': gridImage1Data.alt_description,
-    'creditName': gridImage1Data.user.name,
-    'creditUrl': gridImage1Data.user.links.html,
-  }
-  gridImages.push(gridImage1);
+//   let gridImage1 = {
+//     'url': gridImage1Data.urls.raw,
+//     'alt': gridImage1Data.alt_description,
+//     'creditName': gridImage1Data.user.name,
+//     'creditUrl': gridImage1Data.user.links.html,
+//   }
+//   gridImages.push(gridImage1);
 
 
-// Josua Tree
-  const gridImage2Id = '9SspnXLUOLg'
+// // Josua Tree
+//   const gridImage2Id = '9SspnXLUOLg'
   
-  const fetchGridImage2  = await fetch(unsplashUrl + gridImage2Id + unsplashKey);
-  const gridImage2Data = await fetchGridImage2.json()
+//   const fetchGridImage2  = await fetch(unsplashUrl + gridImage2Id + unsplashKey);
+//   const gridImage2Data = await fetchGridImage2.json()
 
-  let gridImage2 = {
-    'url': gridImage2Data.urls.raw,
-    'alt': gridImage2Data.alt_description,
-    'creditName': gridImage2Data.user.name,
-    'creditUrl': gridImage2Data.user.links.html,
-  }
-  gridImages.push(gridImage2);
+//   let gridImage2 = {
+//     'url': gridImage2Data.urls.raw,
+//     'alt': gridImage2Data.alt_description,
+//     'creditName': gridImage2Data.user.name,
+//     'creditUrl': gridImage2Data.user.links.html,
+//   }
+//   gridImages.push(gridImage2);
 
 
-// Yosemite
-  const gridImage3Id = 'GRaB7A1vzgA'
+// // Yosemite
+//   const gridImage3Id = 'GRaB7A1vzgA'
   
-  const fetchGridImage3  = await fetch(unsplashUrl + gridImage3Id + unsplashKey);
-  const gridImage3Data = await fetchGridImage3.json()
+//   const fetchGridImage3  = await fetch(unsplashUrl + gridImage3Id + unsplashKey);
+//   const gridImage3Data = await fetchGridImage3.json()
 
-  let gridImage3 = {
-    'url': gridImage3Data.urls.raw,
-    'alt': gridImage3Data.alt_description,
-    'creditName': gridImage3Data.user.name,
-    'creditUrl': gridImage3Data.user.links.html,
-  }
-  gridImages.push(gridImage3);
+//   let gridImage3 = {
+//     'url': gridImage3Data.urls.raw,
+//     'alt': gridImage3Data.alt_description,
+//     'creditName': gridImage3Data.user.name,
+//     'creditUrl': gridImage3Data.user.links.html,
+//   }
+//   gridImages.push(gridImage3);
 
 
-  // Yellowstone
-  const gridImage4Id = 'Ge9gn7eU054'
+//   // Yellowstone
+//   const gridImage4Id = 'Ge9gn7eU054'
   
-  const fetchGridImage4  = await fetch(unsplashUrl + gridImage4Id + unsplashKey);
-  const gridImage4Data = await fetchGridImage4.json()
+//   const fetchGridImage4  = await fetch(unsplashUrl + gridImage4Id + unsplashKey);
+//   const gridImage4Data = await fetchGridImage4.json()
 
-  let gridImage4 = {
-    'url': gridImage4Data.urls.raw,
-    'alt': gridImage4Data.alt_description,
-    'creditName': gridImage4Data.user.name,
-    'creditUrl': gridImage4Data.user.links.html,
-  }
-  gridImages.push(gridImage4);
+//   let gridImage4 = {
+//     'url': gridImage4Data.urls.raw,
+//     'alt': gridImage4Data.alt_description,
+//     'creditName': gridImage4Data.user.name,
+//     'creditUrl': gridImage4Data.user.links.html,
+//   }
+//   gridImages.push(gridImage4);
 
-  
 
-  // ?client_id=YOUR_ACCESS_KEY
-  // https://api.unsplash.com/photos/:id
-  // https://api.unsplash.com/collections/:id/photos
 
-  // const res  = await fetch('https://api.unsplash.com/collections/' + collectionID + '/photos' + unsplashKey)
-  // const images = await res.json()
 
-  // console.log(images[0].urls.regular)
 
+  // Great Smokey Images 
+
+  const grsmImageIDs = [
+    'SZbSyPX3Lsk',
+    'Vpxdb9vhqIQ',
+    '_yKLINiXipc'
+  ]
+
+  const grsmImages = await getImages(grsmImageIDs).then(res => res);
+
+
+
+
+// Spit it all back out to the page
   return {
     props: {
       bgHeroImage,
       gridImages,
-      // images
+      allParks,
+      grsmImages
     },
   }
 
