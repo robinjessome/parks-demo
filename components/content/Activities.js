@@ -16,20 +16,20 @@ function Activities(props) {
         textColor = props.textColor
     }
 
-    let maxWidth = 'max-w-[500px]';
+    let maxWidth = 'max-w-[540px]';
     let align = 'justify-center';
     if (props.align == 'right') {
-        align = 'justify-end'
+        align = 'justify-center lg:justify-end'
         maxWidth = null
     } else if (props.align == 'left') {
-        align = 'justify-start'
+        align = 'justify-center lg:justify-start'
         maxWidth = null
     }
 
     return (
         <div className={`font-sans mx-auto ${maxWidth}`}>
             <hr className={`my-6 ${hrColor}`} />
-            <ul className={`flex gap-2 ${align}`}>
+            <ul className={`flex flex-wrap gap-2 ${align}`}>
             {props.data.map((activity, i) => {
                 let showActivity = false
                 let label = null

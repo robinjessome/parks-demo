@@ -27,7 +27,8 @@ park.weatherInfo
 const Container = styled.div`
     width: 94%;
     max-width: 1400px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 `;
 
 const bgImage = props.images[0].url + '&q=80&w=1400'
@@ -46,13 +47,13 @@ height: 75vh;
 }
 `;
 
-let align = null;
+let align = 'text-center lg:text-left';
 let alignReverse = 'text-right'
 let floatLeft = [-20, 0, 'easeOutBack']
 let floatRight = [20, 0, 'easeOutBack']
 
 if (props.align == 'right') {
-    align = 'order-first text-right'
+    align = 'order-first text-center lg:text-right'
     alignReverse = 'order-last'
 }
 
@@ -84,7 +85,7 @@ if (props.accent) {
 
             <div className={`pb-24 bg-gradient-to-b ${accentGradient}`}>
                 <Container>
-                    <div className="grid grid-cols-2 xl:grid-cols-3 gap-8">
+                    <div className="md:grid grid-cols-2 xl:grid-cols-3 gap-8">
                     <Parallax speed={20}>
                         <div className="relative shadow-lg">                
                             <Image
@@ -127,7 +128,7 @@ if (props.accent) {
 
                     <Parallax speed={3} className={`font-serif flex items-center ${align} ${textColor}`}>
                         <div>
-                            <p className="text-2xl mb-6">{park.description.replace('Daily updates >', '')}</p>
+                            <p className="text-xl md:text-2xl mb-6">{park.description.replace('Daily updates >', '')}</p>
                             <a 
                                 href={park.url}
                                 className="group transition text-lg"
@@ -144,7 +145,7 @@ if (props.accent) {
                     </div>
                 </Container>
 
-                <div className="grid grid-cols-2 gap-8 mt-24">
+                <div className="hidden md:grid grid-cols-2 gap-8 mt-24">
                     
                     <Parallax
                         translateX={props.align == 'right' ? floatRight : floatLeft}
@@ -195,6 +196,39 @@ if (props.accent) {
                         </div>
                     </Parallax>
                 </div>
+
+                <Container className={`mt-16 font-serif text-xl block md:hidden ${align} ${textColor}`}>
+
+                <div className="relative shadow-lg mb-16">
+
+                            <Image
+                                alt={props.images[3].alt}
+                                src={`${props.images[3].url}&q=90&w=800&h=800&fit=crop`}
+                                width={800}
+                                height={800}
+                                layout="responsive"
+                                placeholder="blur"
+                                blurDataURL={`${props.images[3].url}&q=20&w=40&h=40&fit=crop`}
+                            />
+   
+                        <InfoPop 
+                            title={props.images[3].alt} 
+                            creditUrl={props.images[3].creditUrl} 
+                            creditName={props.images[3].creditName} 
+                        />
+                    </div>
+
+
+                    <p>{props.infoType == 'weather' ? park.weatherInfo : park.directionsInfo}</p>   
+                    <Activities 
+                        align={props.align == 'right' ? 'left' : 'right'} 
+                        data={park.activities} 
+                        hrColor={accentHr} 
+                        textColor={textColor}
+                    />
+                </Container>
+
+
             </div>
         </section>
 

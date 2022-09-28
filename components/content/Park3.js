@@ -76,7 +76,7 @@ if (props.accent) {
             <div className={`py-16 bg-gradient-to-b ${accentGradient} ${textColor}`}>
                 <Container>
                     <div className="font-serif max-w-4xl mx-auto text-center">
-                        <p className="text-2xl mb-6">{park.description}</p>
+                        <p className="text-xl lg:text-2xl mb-6">{park.description}</p>
                         <p> <a 
                                 href={park.url}
                                 className="group transition text-lg"
@@ -89,7 +89,7 @@ if (props.accent) {
                         </p>
                     </div>
 
-                    <div className="mt-24 grid grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+                    <div className="hidden md:grid grid-cols-3 lg:grid-cols-5 gap-4 text-center mt-24">
                     <Parallax 
                         speed={4}
                     >
@@ -198,9 +198,27 @@ if (props.accent) {
                     </Parallax>
                     </div>
 
+                    <div className="block md:hidden mt-24 relative shadow-lg">                
+                        <Image
+                            alt={props.images[1].alt}
+                            src={`${props.images[1].url}&q=90&w=500&h=500&fit=crop`}
+                            width={500}
+                            height={500}
+                            layout="responsive"
+                            placeholder="blur"
+                            blurDataURL={`${props.images[1].url}&q=20&w=40&h=40&fit=crop`}
+
+                        />
+                        <InfoPop 
+                            title={props.images[1].alt} 
+                            creditUrl={props.images[1].creditUrl} 
+                            creditName={props.images[1].creditName} 
+                        />
+                    </div>
+
                     
                     <div className={`mt-24 font-serif max-w-4xl mx-auto text-center ${textColor}`}>
-                        <p className="text-2xl mb-6">
+                        <p className="text-xl lg:text-2xl mb-6">
                             {props.infoType == 'weather' ? park.weatherInfo : park.directionsInfo}
                         </p>
 

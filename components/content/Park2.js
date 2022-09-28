@@ -29,7 +29,8 @@ park.weatherInfo
 const Container = styled.div`
     width: 94%;
     max-width: 1400px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 `;
 
 const bgImage = props.images[0].url + '&q=80&w=1400'
@@ -78,7 +79,7 @@ console.log(props.images[3].url)
             <div className={`py-16 bg-gradient-to-b ${accentGradient} ${textColor}`}>
                 <Container>
                     <div className="font-serif max-w-4xl mx-auto text-center">
-                        <p className="text-2xl mb-6">{park.description}</p>
+                        <p className="text-xl lg:text-2xl mb-6">{park.description}</p>
                         <p> <a 
                                 href={park.url}
                                 className="group transition text-lg"
@@ -91,7 +92,7 @@ console.log(props.images[3].url)
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-8 mt-16">
+                    <div className="hidden md:grid grid-cols-2 gap-8 mt-16">
                     
                         <Parallax
                             translateX={[-30, -5, 'easeOutBack']}
@@ -140,8 +141,28 @@ console.log(props.images[3].url)
 
                     </div>
 
+                    <Container className="my-12 block md:hidden">
+                    <div className="relative shadow-lg">                
+                                <Image
+                                    alt={props.images[1].alt}
+                                    src={`${props.images[1].url}&q=90&w=600&h=400&fit=crop`}
+                                    width={600}
+                                    height={400}
+                                    layout="responsive"
+                                    placeholder="blur"
+                                    blurDataURL={`${props.images[1].url}&q=20&w=60&h=40&fit=crop`}
+
+                                />
+                                <InfoPop 
+                                    title={props.images[1].alt} 
+                                    creditUrl={props.images[1].creditUrl} 
+                                    creditName={props.images[1].creditName} 
+                                />
+                            </div>
+                    </Container>
+
                     <div className="mt-24 font-serif max-w-4xl mx-auto text-center">
-                        <p className="text-2xl mb-6">
+                        <p className="text-xl lg:text-2xl mb-6">
                             {props.infoType == 'weather' ? park.weatherInfo : park.directionsInfo}
                         </p>
 

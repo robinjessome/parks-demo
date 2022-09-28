@@ -21,9 +21,9 @@ const accents = {
         hr : 'border-orange-200'
     },
     fuchsia : {
-        textColor: 'text-pink-900',
-        gradient : 'from-fuchsia-50 to-fuchsia-100',
-        hr : 'border-pink-200'
+        textColor: 'text-slate-900',
+        gradient : 'from-fuchsia-50 to-blue-200',
+        hr : 'border-indigo-200'
     },
     red : {
         textColor: 'text-stone-700',

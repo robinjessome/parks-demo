@@ -19,10 +19,10 @@ const Banner = styled(ParallaxBanner)`
 const HeadlineBase = styled.h1`
     color: #fff;
     text-shadow: 0 8px 33px rgba(0,0,0,0.25);
-    font-size: 220px;
     font-weight: 700;
     line-height: 0.9;
     text-align: center;
+    width: 100%;
     margin-bottom: 150px;
     max-width: 1200px;
 `;
@@ -36,8 +36,6 @@ rotate={[0, 360]
 */
 
 
-
-
 function Title(props) {
 
     const bgImageData = props.data;
@@ -46,12 +44,13 @@ function Title(props) {
   
     return (
         <Banner
-        // bgImage={bgImage}
-        layers={[{ image: bgImage, speed: -15 }]}
-        className="pt-16 h-full"
+            layers={[{ image: bgImage, speed: -15 }]}
+            className="pt-16 h-full"
         >
-            <div className="relative flex flex-col items-center justify-around ">
-                <HeadlineBase>
+            <div className="relative flex flex-col items-center justify-around h-full">
+                <HeadlineBase
+                    className="text-[80px] md:text-[160px] xl:text-[220px]"
+                >
                     NATIONAL PARKS
                 </HeadlineBase>
                 <ScrollIndicator 
@@ -63,25 +62,11 @@ function Title(props) {
                 </ScrollIndicator>
             </div>
 
-
-
-        <InfoPop 
-            title={"Zion National Park, Utah" }
-            creditUrl={bgImageData.creditUrl} 
-            creditName={bgImageData.creditName} 
-        />
-
-
-            {/* {bgImageData.creditName && (
-                <CreditLink 
-                    href={bgImageData.creditUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="absolute bottom-4 left-4 flex items-center text-xs bg-white bg-opacity-80 border border-white hover:bg-opacity-100 px-3 py-1 rounded-full transition"
-                >
-                    <CameraIcon className="w-4 h-4 mr-2 inline-block"/><span>Photo by <strong>{bgImageData.creditName}</strong></span>
-                </CreditLink>
-            )} */}
+            <InfoPop 
+                title={bgImageData.alt}
+                creditUrl={bgImageData.creditUrl} 
+                creditName={bgImageData.creditName} 
+            />
 
         </Banner>
     )

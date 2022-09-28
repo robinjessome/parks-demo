@@ -13,9 +13,9 @@ const MainGridImage = styled(ParallaxBanner)``
 function Grid(props) {
 
     return (
-        <section className="grid grid-rows-6 grid-cols-2 grid-flow-col max-h-[1200px] lg:max-h-full">
+        <section className="lg:grid grid-rows-6 grid-cols-2 grid-flow-col lg:max-h-full">
 
-        <div className="row-span-6">
+        <div className="row-span-6 h-screen lg:h-full">
             <MainGridImage
                     layers={[{ image: props.data[0].url+'&q=80&w=800', speed: -14 }]}
                     className="h-full"
@@ -31,7 +31,7 @@ function Grid(props) {
             </div>
 
 
-            <div className="relative row-span-3">
+            <div className="relative row-span-3 h-[400px] lg:h-auto">
                 <Image
                     alt={props.data[1].alt}
                     src={`${props.data[1].url}&q=80&w=800`}
@@ -54,15 +54,15 @@ function Grid(props) {
             <div className="row-span-1 p-12 flex items-center">
                 <Parallax
                 translateX={[80, 0, 'easeOutBack']}
-                className="font-serif text-2xl lg:text-4xl pr-16 lg:pr-24 pl-12"
+                className="max-w-lg lg:max-w-full mx-auto text-center lg:text-left font-serif text-2xl lg:text-4xl px-8 lg:pr-24 lg:pl-12"
                 >
                     {props.children}
                 </Parallax>
             </div>
 
 
-            <div className="relative row-span-2 grid grid-cols-2">
-                <div className="relative">
+            <div className="relative row-span-2 md:grid grid-cols-2 min-h-[400px]">
+                <div className="relative h-[300px] md:h-auto">
                     <Image
                         alt={props.data[2].alt}
                         src={`${props.data[2].url}&q=90&w=400`}
@@ -77,7 +77,7 @@ function Grid(props) {
                     creditName={props.data[2].creditName} 
                 />
                 </div>
-                <div className="relative">                
+                <div className="relative h-[300px] md:h-auto">                
                     <Image
                         alt={props.data[3].alt}
                         src={`${props.data[3].url}&q=90&w=400`}
