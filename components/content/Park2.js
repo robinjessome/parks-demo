@@ -55,6 +55,8 @@ if (props.accent) {
     textColor = accents[props.accent].textColor
 }
 
+console.log(props.images[3].url)
+
     return (
         <section>
             <Banner
