@@ -1,5 +1,6 @@
 import { Popover, Transition } from '@headlessui/react'
-import { CameraIcon, XMarkIcon } from '@heroicons/react/24/solid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 function InfoPop(props) {
     return (
@@ -18,7 +19,7 @@ function InfoPop(props) {
             >
               <Popover.Panel
                   static
-                  className="mb-2 p-4 w-[250px] bg-white shadow-lg rounded-lg "
+                  className="mb-2 p-4 w-[250px] bg-white shadow-lg rounded-lg text-left"
               >
                 {props.title && (
                   <>
@@ -32,14 +33,14 @@ function InfoPop(props) {
   
           {/* {!open && ( */}
             <Popover.Button
-            className={`flex items-center bg-white border border-white border-opacity-50  hover:bg-opacity-100 px-3 py-1 rounded-full  hover:shadow-xl transition ${open ? "bg-opacity-100 shadow-xl" : "shadow bg-opacity-40"}`}
+            className={`flex items-center bg-white border border-white border-opacity-50  hover:bg-opacity-100 px-3 py-1 rounded-full hover:shadow-xl transition ${open ? "bg-opacity-100 shadow-xl" : "shadow bg-opacity-40"}`}
           >
               {!open && (
                   <>
-                      <CameraIcon className="w-4 h-4 inline-block mr-2"/> Info
+                      <FontAwesomeIcon icon={faCamera} className="w-4 h-4 inline-block mr-2" /> Info
                   </>
               )}
-              {open && <XMarkIcon className="w-4 h-4" />}
+              {open && <FontAwesomeIcon icon={faXmark} className="w-4 h-4" />}
   
                   
           </Popover.Button>

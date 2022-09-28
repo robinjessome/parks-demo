@@ -1,8 +1,8 @@
 import { Parallax, ParallaxBanner } from 'react-scroll-parallax';
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
-import { ArrowDownIcon, CameraIcon, XMarkIcon } from '@heroicons/react/24/solid'
-// import { Popover, Transition } from '@headlessui/react'
 import InfoPop from "./InfoPop";
 
 const Banner = styled(ParallaxBanner)`
@@ -56,9 +56,10 @@ function Title(props) {
                 </HeadlineBase>
                 <ScrollIndicator 
                     speed={-4}
-                    className="text-white bg-white bg-opacity-20 border-2 border-white rounded-full p-6 font-bold text-xl shadow-lg"
+                    className="text-white bg-white bg-opacity-20 border-2 border-white rounded-full w-24 h-24 font-bold text-xl shadow-lg flex items-center justify-center"
                 >
-                    <ArrowDownIcon className="h-8 w-8" />
+                    {/* <ArrowDownIcon className="h-8 w-8" /> */}
+                    <FontAwesomeIcon icon={faArrowDown} className="w-8 h-8" />
                 </ScrollIndicator>
             </div>
 

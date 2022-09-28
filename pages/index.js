@@ -3,7 +3,8 @@ import Head from 'next/head'
 import Title from "../components/content/Title";
 import IntroBlock from '../components/content/IntroBlock';
 import Grid from "../components/content/Grid";
-import GreatSmokey from "../components/content/GreatSmokey";
+import Park1 from "../components/content/Park1";
+import Park2 from "../components/content/Park2";
 
 function Home(props) {
 
@@ -29,7 +30,26 @@ function Home(props) {
           <p>Keep scrolling to explore some of the most popular National Parks!</p>
         </Grid>
 
-        <GreatSmokey data={props.allParks.data[0]} images={props.grsmImages} />
+        <Park1 
+          data={props.allParks.data[1]} 
+          images={props.grsmImages} 
+          accent="cyan"
+        />
+
+        <Park2 
+          data={props.allParks.data[2]} 
+          images={props.yellImages} 
+          accent="red" 
+          infoType="weather"
+        />
+
+        <Park1 
+          align="right" 
+          data={props.allParks.data[0]} 
+          images={props.grcaImages} 
+          accent="rose"
+          infoType="weather"
+        />
 
 
 
@@ -67,7 +87,7 @@ Petrified Forest : pefo
 */
 
   const parksKey = '&api_key=' + process.env.PARKS_API_KEY;
-  const parkIds = '?parkCode=grsm,zion'
+  const parkIds = '?parkCode=grsm,yell,grca'
   const parksUrl = 'https://developer.nps.gov/api/v1/parks'
 
   const allParks = await axios.get(parksUrl + parkIds + parksKey)
@@ -143,67 +163,6 @@ async function getImages(ids) {
 
   const gridImages = await getImages(gridImageIds).then(res => res);
 
-//   let gridImages = [];
-
-//   // grand canyon  
-//   const gridImage1Id = 'ICXB0_EV0KY'
-  
-//   const fetchGridImage1  = await fetch(unsplashUrl + gridImage1Id + unsplashKey);
-//   const gridImage1Data = await fetchGridImage1.json()
-
-//   let gridImage1 = {
-//     'url': gridImage1Data.urls.raw,
-//     'alt': gridImage1Data.alt_description,
-//     'creditName': gridImage1Data.user.name,
-//     'creditUrl': gridImage1Data.user.links.html,
-//   }
-//   gridImages.push(gridImage1);
-
-
-// // Josua Tree
-//   const gridImage2Id = '9SspnXLUOLg'
-  
-//   const fetchGridImage2  = await fetch(unsplashUrl + gridImage2Id + unsplashKey);
-//   const gridImage2Data = await fetchGridImage2.json()
-
-//   let gridImage2 = {
-//     'url': gridImage2Data.urls.raw,
-//     'alt': gridImage2Data.alt_description,
-//     'creditName': gridImage2Data.user.name,
-//     'creditUrl': gridImage2Data.user.links.html,
-//   }
-//   gridImages.push(gridImage2);
-
-
-// // Yosemite
-//   const gridImage3Id = 'GRaB7A1vzgA'
-  
-//   const fetchGridImage3  = await fetch(unsplashUrl + gridImage3Id + unsplashKey);
-//   const gridImage3Data = await fetchGridImage3.json()
-
-//   let gridImage3 = {
-//     'url': gridImage3Data.urls.raw,
-//     'alt': gridImage3Data.alt_description,
-//     'creditName': gridImage3Data.user.name,
-//     'creditUrl': gridImage3Data.user.links.html,
-//   }
-//   gridImages.push(gridImage3);
-
-
-//   // Yellowstone
-//   const gridImage4Id = 'Ge9gn7eU054'
-  
-//   const fetchGridImage4  = await fetch(unsplashUrl + gridImage4Id + unsplashKey);
-//   const gridImage4Data = await fetchGridImage4.json()
-
-//   let gridImage4 = {
-//     'url': gridImage4Data.urls.raw,
-//     'alt': gridImage4Data.alt_description,
-//     'creditName': gridImage4Data.user.name,
-//     'creditUrl': gridImage4Data.user.links.html,
-//   }
-//   gridImages.push(gridImage4);
-
 
 
 
@@ -213,12 +172,32 @@ async function getImages(ids) {
   const grsmImageIDs = [
     'SZbSyPX3Lsk',
     'Vpxdb9vhqIQ',
-    '_yKLINiXipc'
+    '_yKLINiXipc',
+    'S2QNERw9meM'
   ]
 
   const grsmImages = await getImages(grsmImageIDs).then(res => res);
 
 
+  const yellImageIds = [
+    'w3RPp9POocc',
+    'oN3U95O4cag',
+    'Wny9v0ba1Us',
+    'gp2QLJKOvVc'
+
+  ]
+
+  const yellImages = await getImages(yellImageIds).then(res => res);
+
+
+  const grcaImageIds = [
+    'JEq_2UJoTtg',
+    'oN3U95O4cag',
+    'Wny9v0ba1Us',
+    'gp2QLJKOvVc'
+  ]
+
+  const grcaImages = await getImages(grcaImageIds).then(res => res);
 
 
 // Spit it all back out to the page
@@ -227,7 +206,9 @@ async function getImages(ids) {
       bgHeroImage,
       gridImages,
       allParks,
-      grsmImages
+      grsmImages,
+      yellImages,
+      grcaImages
     },
   }
 

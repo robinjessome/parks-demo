@@ -20,5 +20,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [Headless UI](https://headlessui.com/)
 - [React Scroll Parallax](https://react-scroll-parallax.damnthat.tv/docs/intro)
 - Fonts: [Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro) and [Source Serif Pro](https://fonts.google.com/specimen/Source+Serif+Pro) via Google
-- Icons by [Heroicons](https://heroicons.com/)
+- Icons by [Font Awesome](https://fontawesome.com/)
 
