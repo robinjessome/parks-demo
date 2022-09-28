@@ -155,12 +155,12 @@ if (props.accent) {
                         <Parallax speed={8} className="mt-12 shadow-lg">
                         <Image
                                     alt={props.images[3].alt}
-                                    src={`${props.images[3].url}&q=90&w=600&h=400&fit=crop`}
-                                    width={600}
-                                    height={400}
+                                    src={`${props.images[3].url}&q=90&w=900&h=600&fit=crop`}
+                                    width={900}
+                                    height={600}
                                     layout="responsive"
                                     placeholder="blur"
-                                    blurDataURL={`${props.images[3].url}&q=20&w=60&h=40&fit=crop`}
+                                    blurDataURL={`${props.images[3].url}&q=20&w=90&h=60&fit=crop`}
 
                                 />
                                 <InfoPop 
