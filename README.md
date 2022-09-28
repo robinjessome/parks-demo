@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/)/React practice experiment exploring [Re
 
 ## DEMO
 
-*[coming soon]*
+[Live demo on Vercel](https://parks-demo-incp.vercel.app/)
 
 ## Getting Started
 

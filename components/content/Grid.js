@@ -51,13 +51,16 @@ function Grid(props) {
 
 
 
-            <div className="row-span-1 p-12 flex items-center">
+            <div className="row-span-1 p-12 flex items-center w-full overflow-hidden">
                 <Parallax
                 translateX={[80, 0, 'easeOutBack']}
-                className="max-w-lg lg:max-w-full mx-auto text-center lg:text-left font-serif text-2xl lg:text-4xl px-8 lg:pr-24 lg:pl-12"
+                className="hidden md:block max-w-lg lg:max-w-full mx-auto text-center lg:text-left font-serif text-2xl lg:text-4xl px-8 lg:pr-24 lg:pl-12"
                 >
                     {props.children}
                 </Parallax>
+                <div className="md:hidden max-w-lg mx-auto text-center font-serif text-2xl px-4">
+                    {props.children}
+                </div>
             </div>
 
 

@@ -63,7 +63,7 @@ if (props.accent) {
                 className="pt-24 h-full"
             >
                 <Parallax speed={-5}>
-                    <h2 className="text-6xl md:text-[100px] lg:text-[130px] max-w-[1200px] px-6 mx-auto">
+                    <h2 className="text-4xl md:text-[100px] lg:text-[130px] max-w-[1200px] px-6 mx-auto">
                         {props.useFullName ? park.fullName : park.name}
                     </h2>
                 </Parallax>

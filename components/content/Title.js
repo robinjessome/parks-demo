@@ -49,7 +49,7 @@ function Title(props) {
         >
             <div className="relative flex flex-col items-center justify-around h-full">
                 <HeadlineBase
-                    className="text-[80px] md:text-[160px] xl:text-[220px]"
+                    className="text-[60px] md:text-[160px] xl:text-[220px]"
                 >
                     NATIONAL PARKS
                 </HeadlineBase>
