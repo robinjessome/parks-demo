@@ -201,15 +201,15 @@ if (props.accent) {
 
                 <div className="relative shadow-lg mb-16">
 
-                            <Image
-                                alt={props.images[3].alt}
-                                src={`${props.images[3].url}&q=90&w=800&h=800&fit=crop`}
-                                width={800}
-                                height={800}
-                                layout="responsive"
-                                placeholder="blur"
-                                blurDataURL={`${props.images[3].url}&q=20&w=40&h=40&fit=crop`}
-                            />
+                        <Image
+                            alt={props.images[3].alt}
+                            src={`${props.images[3].url}&q=90&w=800&h=800&fit=crop`}
+                            width={800}
+                            height={800}
+                            layout="responsive"
+                            placeholder="blur"
+                            blurDataURL={`${props.images[3].url}&q=20&w=40&h=40&fit=crop`}
+                        />
    
                         <InfoPop 
                             title={props.images[3].alt} 
