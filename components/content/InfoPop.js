@@ -19,7 +19,7 @@ function InfoPop(props) {
             >
               <Popover.Panel
                   static
-                  className="mb-2 p-4 w-[250px] bg-white shadow-lg rounded-lg text-left"
+                  className="mb-2 p-4 w-[250px] bg-white shadow-lg rounded-lg text-left text-slate-900"
               >
                 {props.title && (
                   <>
@@ -27,13 +27,13 @@ function InfoPop(props) {
                     <hr className="my-3" />
                   </>
                 )}
-                  <p>Photo by <a href={props.creditUrl} target="blank" rel="noreferrer" className=" hover:underline font-bold">{props.creditName}</a>.</p>
+                  <p>Photo by <a href={`${props.creditUrl}?utm_source=rj_parks&utm_medium=referral`} target="blank" rel="noreferrer" className=" hover:underline font-bold">{props.creditName}</a>.</p>
               </Popover.Panel>
             </Transition>
   
           {/* {!open && ( */}
             <Popover.Button
-            className={`flex items-center bg-white border border-white border-opacity-50  hover:bg-opacity-100 px-3 py-1 rounded-full hover:shadow-xl transition ${open ? "bg-opacity-100 shadow-xl" : "shadow bg-opacity-40"}`}
+            className={`text-slate-900 flex items-center bg-white border border-white border-opacity-50  hover:bg-opacity-100 px-3 py-1 rounded-full hover:shadow-xl transition ${open ? "bg-opacity-100 shadow-xl" : "shadow bg-opacity-40"}`}
           >
               {!open && (
                   <>

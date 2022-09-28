@@ -2,8 +2,6 @@ import Layout from '../components/Layout';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import '../styles/globals.css'
 
-// library.add(faCamera, faArrowDown, faArrowRightLong, faXmark)
-
 function MyApp({ Component, pageProps }) {
   
 

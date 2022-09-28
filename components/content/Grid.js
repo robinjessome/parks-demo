@@ -13,7 +13,7 @@ const MainGridImage = styled(ParallaxBanner)``
 function Grid(props) {
 
     return (
-        <section className="grid grid-rows-6 grid-cols-2 grid-flow-col">
+        <section className="grid grid-rows-6 grid-cols-2 grid-flow-col max-h-[1200px] lg:max-h-full">
 
         <div className="row-span-6">
             <MainGridImage
@@ -54,7 +54,7 @@ function Grid(props) {
             <div className="row-span-1 p-12 flex items-center">
                 <Parallax
                 translateX={[80, 0, 'easeOutBack']}
-                className="font-serif text-4xl pr-24 pl-12"
+                className="font-serif text-2xl lg:text-4xl pr-16 lg:pr-24 pl-12"
                 >
                     {props.children}
                 </Parallax>
@@ -93,48 +93,6 @@ function Grid(props) {
                     />
                 </div>
             </div>
-
-
-        {/* <div className="h-screen">
-            <ParallaxBanner
-                    layers={[{ image: props.data[0].url+'&q=80&w=800', speed: -12 }]}
-                    className="h-full"
-                    >
-
-                    <InfoPop 
-                        title={props.data[0].alt} 
-                        creditUrl={props.data[0].creditUrl} 
-                        creditName={props.data[0].creditName} 
-                    />
-
-            </ParallaxBanner>
-            </div>
-
-
-            <div className="h-screen">
-
-
-                <div className="h-[400px] relative">
-
-                    <Image
-                            alt="Mountains"
-                            src={`${props.data[1].url}&q=80&w=800`}
-                            layout="fill"
-                            objectFit="cover"
-                        />
-                    <InfoPop 
-                        title={props.data[1].alt} 
-                        creditUrl={props.data[1].creditUrl} 
-                        creditName={props.data[1].creditName} 
-                    />
-                </div>
-
-                
-                <div className="">
-                    {props.children}
-                </div>
-            </div> */}
-
         </section>
 
     )

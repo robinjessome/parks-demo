@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBicycle, faBinoculars, faCampground, faFish, faPersonHiking, faPersonSkiing, faShip } from '@fortawesome/free-solid-svg-icons'
+import { faBicycle, faBinoculars, faCampground, faFish, faMoon, faPersonHiking, faPersonSkiing, faShip } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
 
@@ -7,9 +7,13 @@ function Activities(props) {
 
     // console.log(props.data);
 
-    let hrColor = null;
+    let hrColor = null
+    let textColor = '';
     if ( props.hrColor ) {
         hrColor = props.hrColor
+    }
+    if ( props.textColor ) {
+        textColor = props.textColor
     }
 
     let maxWidth = 'max-w-[500px]';
@@ -32,6 +36,12 @@ function Activities(props) {
                 let icon = null
 
                 switch (activity.name) {
+
+                    case 'Astronomy':
+                        label = activity.name
+                        showActivity = true
+                        icon = faMoon
+                    break;
 
                     case 'Biking':
                         label = activity.name
@@ -81,10 +91,10 @@ function Activities(props) {
                     return (
                         <li 
                             key={`activity-${i}`}
-                            className="p-2 text-xs rounded-lg flex flex-col items-center"
+                            className={`${textColor} p-2 text-xs rounded-lg flex flex-col items-center`}
                         >
                             <FontAwesomeIcon icon={icon} className="w-6 h-6" />
-                            <span className="text-slate-500">{label}</span>
+                            <span className="opacity-70">{label}</span>
                         
                         </li>
                     )

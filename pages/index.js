@@ -5,11 +5,9 @@ import IntroBlock from '../components/content/IntroBlock';
 import Grid from "../components/content/Grid";
 import Park1 from "../components/content/Park1";
 import Park2 from "../components/content/Park2";
+import Park3 from "../components/content/Park3";
 
 function Home(props) {
-
-
-
 
   return (
     <div>
@@ -30,30 +28,73 @@ function Home(props) {
           <p>Keep scrolling to explore some of the most popular National Parks!</p>
         </Grid>
 
+        {/* Great Smoky */}
         <Park1 
-          data={props.allParks.data[1]} 
+          data={props.allParks.data[2]} 
           images={props.grsmImages} 
           accent="cyan"
         />
 
+        {/* Yellowstone */}
         <Park2 
-          data={props.allParks.data[2]} 
+          data={props.allParks.data[5]} 
           images={props.yellImages} 
           accent="red" 
           infoType="weather"
         />
 
+        {/* Joshua Tree */}
         <Park1 
-          align="right" 
+          align="right"
+          data={props.allParks.data[4]} 
+          images={props.jotrImages} 
+          accent="indigo" 
+          infoType="weather"
+        />
+        
+        {/* Zion */}
+        <Park3 
+          useFullName={true}
+          data={props.allParks.data[7]} 
+          images={props.zionImages} 
+          accent="teal-dark" 
+          infoType="weather"
+        />
+
+        {/* Grand Canyon */}
+        <Park1  
           data={props.allParks.data[0]} 
           images={props.grcaImages} 
           accent="rose"
           infoType="weather"
         />
 
+        {/* Hawaii Volcano */}
+        <Park2 
+          data={props.allParks.data[3]} 
+          images={props.havoImages} 
+          accent="stone" 
+          infoType="weather"
+        />
 
+        {/* Grand Teton */}
+        <Park1 
+          align="right"
+          data={props.allParks.data[1]} 
+          images={props.grteImages} 
+          accent="orange" 
+          infoType=""
+        />
 
-      <div className="h-[2000px]"></div>
+        {/* Yosemite */}
+        <Park3 
+          useFullName={true}
+          data={props.allParks.data[6]} 
+          images={props.yoseImages} 
+          accent="fuchsia" 
+          infoType="weather"
+        />
+
       </main>
     </div>
   )
@@ -63,6 +104,22 @@ function Home(props) {
 export async function getStaticProps() {
 
   // PARKS
+
+  /*
+
+
+  0: grand canyon
+  1: Grand Teton
+  2: great smoky
+  3: Hawaii Volcano
+  4: Joshua Tree
+  5: Yellowstone
+  6: Yosemite
+  7: Zion
+
+
+
+  */
 
 /*
 
@@ -87,7 +144,7 @@ Petrified Forest : pefo
 */
 
   const parksKey = '&api_key=' + process.env.PARKS_API_KEY;
-  const parkIds = '?parkCode=grsm,yell,grca'
+  const parkIds = '?parkCode=grsm,yell,grca,jotr,havo,zion,grte,yose' // no spaces
   const parksUrl = 'https://developer.nps.gov/api/v1/parks'
 
   const allParks = await axios.get(parksUrl + parkIds + parksKey)
@@ -96,6 +153,7 @@ Petrified Forest : pefo
     })
 
 
+    // console.log(allParks)
 
 
   // IMAGES
@@ -137,22 +195,19 @@ async function getImage(id) {
     'creditUrl': imageDataJson.user.links.html,
   }
 
-  // return axios.get(
-  //   `${baseUrl}?app_id=${hereAppId}&app_code=${hereAppCode}&searchtext=${name}`
-  // );
   return imageData
 }
 
 async function getImages(ids) {
   const withCoords = await Promise.all(ids.map(id => getImage(id)));
-  console.log('in async function');
   return withCoords;
 }
 
 
 
 
-  // Grid 
+
+// Grid 
 
   const gridImageIds = [
     'ICXB0_EV0KY', // Grand Canyon
@@ -165,20 +220,17 @@ async function getImages(ids) {
 
 
 
-
-
-  // Great Smokey Images 
-
+// Great Smokey Images 
   const grsmImageIDs = [
     'SZbSyPX3Lsk',
     'Vpxdb9vhqIQ',
     '_yKLINiXipc',
     'S2QNERw9meM'
   ]
-
   const grsmImages = await getImages(grsmImageIDs).then(res => res);
 
 
+// Yellowstone
   const yellImageIds = [
     'w3RPp9POocc',
     'oN3U95O4cag',
@@ -186,18 +238,87 @@ async function getImages(ids) {
     'gp2QLJKOvVc'
 
   ]
-
   const yellImages = await getImages(yellImageIds).then(res => res);
 
 
+// Grand Canyon
   const grcaImageIds = [
     'JEq_2UJoTtg',
-    'oN3U95O4cag',
-    'Wny9v0ba1Us',
-    'gp2QLJKOvVc'
+    '9_x5jYJw2VQ',
+    'XjDuNQr972w',
+    'jVdi5C5I7QE'
   ]
-
   const grcaImages = await getImages(grcaImageIds).then(res => res);
+
+
+// Joshua Tree
+  const jotrImageIds = [
+    'pa1HK9M01l4',
+    'aEj8TEQHztY',
+    // 'xLgqS5honO0',
+    'FZlXXz5vlSs',
+    '0oeFUCb9txg'
+  ]
+  const jotrImages = await getImages(jotrImageIds).then(res => res);
+
+
+// Hawaii Volcano
+  const havoImageIds = [
+    'yxrXBQVwx48',
+    'lZFVzfcjqKA',
+    'FCN1MJDfnBg',
+    '9GDa7nK_4q0'
+  ]
+  const havoImages = await getImages(havoImageIds).then(res => res);
+
+
+// Zion
+  const zionImageIds = [
+    'zhUzdTgtRP8',
+    'EQvF0LXnaTA',
+    'aHdAdA0JzLE',
+    'TdW30MbIEUs',
+    'hb2nxexIy2k',
+    'qp3LsH64zKY',
+    'PfTNxPww6bY'
+
+  ]
+  const zionImages = await getImages(zionImageIds).then(res => res);
+
+
+  // Grand Teton
+  const grteImageIds = [
+    'q-f4HuBlEMQ',
+    'iIrjJfqSS6w',
+    '02QRlYV43jY',
+    'kCpCd6oQTCw',
+
+  ]
+  const grteImages = await getImages(grteImageIds).then(res => res);
+
+
+// Yosemite
+  const yoseImageIds = [
+    'vaPoJZB9Mzg',
+    'UCd78vfC8vU',
+    'mPnxwQBtUZE',
+    'GRaB7A1vzgA',
+    'C9vbhthpgZE',
+    '1Nkd3dtLpkI',
+    'ubf2i8y6vys'
+  ]
+  const yoseImages = await getImages(yoseImageIds).then(res => res);
+
+
+// Rocky mountain
+  const romoImageIds = [
+    'JEq_2UJoTtg',
+    '9_x5jYJw2VQ',
+    'XjDuNQr972w',
+    'jVdi5C5I7QE'
+  ]
+  const romoImages = await getImages(romoImageIds).then(res => res);
+
 
 
 // Spit it all back out to the page
@@ -208,7 +329,13 @@ async function getImages(ids) {
       allParks,
       grsmImages,
       yellImages,
-      grcaImages
+      grcaImages,
+      jotrImages,
+      havoImages,
+      zionImages,
+      grteImages,
+      yoseImages,
+      romoImages
     },
   }
 

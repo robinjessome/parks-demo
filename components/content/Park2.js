@@ -4,6 +4,7 @@ import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons'
 
 import styled from 'styled-components'
 import Image from 'next/image'
+import { accents } from "../../constants/global";
 import InfoPop from "./InfoPop";
 import Activities from "./Activities";
 
@@ -38,7 +39,6 @@ height: 75vh;
     & h2 {
         color: #fff;
         text-shadow: 0 8px 33px rgba(0,0,0,0.25);
-        font-size: 130px;
         font-weight: 700;
         line-height: 0.9;
         text-align: center;
@@ -48,21 +48,11 @@ height: 75vh;
     }
 `;
 
-const accents = {
-    cyan : {
-        gradient : 'from-cyan-50 to-cyan-100',
-        hr : 'border-cyan-300'
-    },
-    red : {
-        gradient : 'from-red-100 to-red-50',
-        hr : 'border-red-300'
-    }
-}
-
-let accentGradient, accentHr;
+let accentGradient, accentHr, textColor, activityText;
 if (props.accent) {
     accentGradient = accents[props.accent].gradient
     accentHr = accents[props.accent].hr
+    textColor = accents[props.accent].textColor
 }
 
     return (
@@ -72,7 +62,9 @@ if (props.accent) {
                 className="pt-24 h-full"
             >
                 <Parallax speed={-5}>
-                    <h2 className="max-w-[1200px] mx-auto">{park.name}</h2>
+                    <h2 className="text-6xl md:text-[100px] lg:text-[130px] max-w-[1200px] px-6 mx-auto">
+                        {props.useFullName ? park.fullName : park.name}
+                    </h2>
                 </Parallax>
                 <InfoPop 
                     title={props.images[0].alt} 
@@ -81,7 +73,7 @@ if (props.accent) {
                 />
             </Banner>
 
-            <div className={`py-16 bg-gradient-to-b ${accentGradient}`}>
+            <div className={`py-16 bg-gradient-to-b ${accentGradient} ${textColor}`}>
                 <Container>
                     <div className="font-serif max-w-4xl mx-auto text-center">
                         <p className="text-2xl mb-6">{park.description}</p>
@@ -100,18 +92,18 @@ if (props.accent) {
                     <div className="grid grid-cols-2 gap-8 mt-16">
                     
                         <Parallax
-                            translateX={[-40, -5, 'easeOutBack']}
+                            translateX={[-30, -5, 'easeOutBack']}
                             className=""
                         >
                             <div className="relative shadow-lg">                
                                 <Image
                                     alt={props.images[1].alt}
-                                    src={`${props.images[1].url}&q=90&w=600`}
+                                    src={`${props.images[1].url}&q=90&w=600&h=400&fit=crop`}
                                     width={600}
                                     height={400}
                                     layout="responsive"
                                     placeholder="blur"
-                                    blurDataURL={`${props.images[1].url}&q=20&w=40`}
+                                    blurDataURL={`${props.images[1].url}&q=20&w=60&h=40&fit=crop`}
 
                                 />
                                 <InfoPop 
@@ -123,17 +115,17 @@ if (props.accent) {
                         </Parallax>
 
                         <Parallax
-                            translateX={[40, 5, 'easeOutBack']}
+                            translateX={[30, 5, 'easeOutBack']}
                         >
                             <div className="relative shadow-lg">                
                                 <Image
                                     alt={props.images[2].alt}
-                                    src={`${props.images[2].url}&q=90&w=600`}
+                                    src={`${props.images[2].url}&q=90&w=600&h=400&fit=crop`}
                                     width={600}
                                     height={400}
                                     layout="responsive"
                                     placeholder="blur"
-                                    blurDataURL={`${props.images[2].url}&q=20&w=40`}
+                                    blurDataURL={`${props.images[2].url}&q=20&w=60&h=40&fit=crop`}
 
                                 />
                                 <InfoPop 
@@ -152,18 +144,23 @@ if (props.accent) {
                         </p>
 
                         <div>
-                            <Activities align="center" data={park.activities} hrColor={accentHr} />
+                            <Activities 
+                                align="center" 
+                                data={park.activities} 
+                                hrColor={accentHr} 
+                                textColor={textColor}
+                            />
                         </div>
 
                         <Parallax speed={8} className="mt-12 shadow-lg">
                         <Image
                                     alt={props.images[3].alt}
-                                    src={`${props.images[3].url}&q=90&w=600`}
+                                    src={`${props.images[3].url}&q=90&w=600&h=400&fit=crop`}
                                     width={600}
                                     height={400}
                                     layout="responsive"
                                     placeholder="blur"
-                                    blurDataURL={`${props.images[3].url}&q=20&w=40`}
+                                    blurDataURL={`${props.images[3].url}&q=20&w=60&h=40&fit=crop`}
 
                                 />
                                 <InfoPop 
