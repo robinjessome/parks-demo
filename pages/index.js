@@ -12,7 +12,7 @@ function Home(props) {
   return (
     <div>
       <Head>
-        <title>National Parks</title>
+        <title>National Parks | Robin Jessome</title>
         <meta name="description" content="Scrolly National Parks thing..." />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
