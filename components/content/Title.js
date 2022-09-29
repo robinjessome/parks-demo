@@ -55,10 +55,10 @@ function Title(props) {
                 </HeadlineBase>
                 <ScrollIndicator 
                     speed={-4}
-                    className="text-white bg-white bg-opacity-20 border-2 border-white rounded-full w-24 h-24 font-bold text-xl shadow-lg flex items-center justify-center"
+                    className="text-white bg-white bg-opacity-20 border-2 border-white rounded-full w-16 h-16 lg:w-24 lg:h-24 font-bold text-xl shadow-lg flex items-center justify-center"
                 >
                     {/* <ArrowDownIcon className="h-8 w-8" /> */}
-                    <FontAwesomeIcon icon={faArrowDown} className="w-8 h-8" />
+                    <FontAwesomeIcon icon={faArrowDown} className="w-6 h-6 lg:w-8 lg:h-8" />
                 </ScrollIndicator>
             </div>
 
