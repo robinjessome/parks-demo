@@ -14,7 +14,7 @@ function Home(props) {
       <Head>
         <title>National Parks | Robin Jessome</title>
         <meta name="description" content="Scrolly National Parks thing..." />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>

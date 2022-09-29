@@ -34,13 +34,11 @@ const accents = {
         textColor: 'text-red-900',
         gradient : 'from-rose-200 to-rose-50',
         hr : 'border-rose-200',
-        activityText: ''
     },
     stone : {
         textColor: 'text-stone-900',
         gradient : 'from-stone-50 to-stone-300',
         hr : 'border-stone-300',
-        activityText: 'text-red-500'
     },
     'teal-dark' : {
         textColor : 'text-teal-100',
