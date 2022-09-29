@@ -47,7 +47,7 @@ height: 75vh;
 `;
 
 
-let accentGradient, accentHr, textColor, activityText;
+let accentGradient, accentHr, textColor;
 if (props.accent) {
     accentGradient = accents[props.accent].gradient
     accentHr = accents[props.accent].hr
@@ -232,21 +232,21 @@ if (props.accent) {
                         </div>
 
                         <Parallax speed={8} className="mt-12 shadow-lg">
-                        <Image
-                                    alt={props.images[6].alt}
-                                    src={`${props.images[6].url}&q=90&w=800&h=450&fit=crop`}
-                                    width={800}
-                                    height={450}
-                                    layout="responsive"
-                                    placeholder="blur"
-                                    blurDataURL={`${props.images[6].url}&q=20&w=40`}
+                            <Image
+                                alt={props.images[6].alt}
+                                src={`${props.images[6].url}&q=90&w=800&h=450&fit=crop`}
+                                width={800}
+                                height={450}
+                                layout="responsive"
+                                placeholder="blur"
+                                blurDataURL={`${props.images[6].url}&q=20&w=40`}
 
-                                />
-                                <InfoPop 
-                                    title={props.images[6].alt} 
-                                    creditUrl={props.images[6].creditUrl} 
-                                    creditName={props.images[6].creditName} 
-                                />
+                            />
+                            <InfoPop 
+                                title={props.images[6].alt} 
+                                creditUrl={props.images[6].creditUrl} 
+                                creditName={props.images[6].creditName} 
+                            />
                         </Parallax>
 
                     </div>
@@ -254,7 +254,7 @@ if (props.accent) {
                 </Container>              
             </div>
         </section>
-
-    )}
+    )
+}
 
 export default Park3

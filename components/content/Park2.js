@@ -49,7 +49,7 @@ height: 75vh;
     }
 `;
 
-let accentGradient, accentHr, textColor, activityText;
+let accentGradient, accentHr, textColor;
 if (props.accent) {
     accentGradient = accents[props.accent].gradient
     accentHr = accents[props.accent].hr
@@ -94,7 +94,6 @@ if (props.accent) {
                     
                         <Parallax
                             translateX={[-30, -5, 'easeOutBack']}
-                            className=""
                         >
                             <div className="relative shadow-lg">                
                                 <Image
@@ -174,64 +173,29 @@ if (props.accent) {
                         </div>
 
                         <Parallax speed={8} className="mt-12 shadow-lg">
-                        <Image
-                                    alt={props.images[3].alt}
-                                    src={`${props.images[3].url}&q=90&w=900&h=600&fit=crop`}
-                                    width={900}
-                                    height={600}
-                                    layout="responsive"
-                                    placeholder="blur"
-                                    blurDataURL={`${props.images[3].url}&q=20&w=90&h=60&fit=crop`}
+                            <Image
+                                alt={props.images[3].alt}
+                                src={`${props.images[3].url}&q=90&w=900&h=600&fit=crop`}
+                                width={900}
+                                height={600}
+                                layout="responsive"
+                                placeholder="blur"
+                                blurDataURL={`${props.images[3].url}&q=20&w=90&h=60&fit=crop`}
 
-                                />
-                                <InfoPop 
-                                    title={props.images[3].alt} 
-                                    creditUrl={props.images[3].creditUrl} 
-                                    creditName={props.images[3].creditName} 
-                                />
+                            />
+                            <InfoPop 
+                                title={props.images[3].alt} 
+                                creditUrl={props.images[3].creditUrl} 
+                                creditName={props.images[3].creditName} 
+                            />
                         </Parallax>
 
                     </div>
 
                 </Container>
-
-                {/* <div className="grid grid-cols-2 gap-8 mt-24">
-                    
-                    <Parallax
-                        translateX={[-80, 0, 'easeOutBack']}
-                        className="font-serif text-2xl pr-24 pl-12 flex items-center text-right"
-                    >
-                        <div>
-                            <p>{park.weatherInfo}</p>   
-                            <Activities data={park.activities} hrColor='border-red-200' />
-                        </div>
-                    </Parallax>
-
-                    <Parallax
-                        translateX={[80, 0, 'easeOutBack']}
-                    >
-                        <div className="relative shadow-lg">
-                        <Image
-                            alt={props.images[3].alt}
-                            src={`${props.images[3].url}&q=90&w=800`}
-                            width={800}
-                            height={500}
-                            layout="responsive"
-                            placeholder="blur"
-                            blurDataURL={`${props.images[3].url}&q=20&w=40`}
-
-                        />
-                        <InfoPop 
-                            title={props.images[3].alt} 
-                            creditUrl={props.images[3].creditUrl} 
-                            creditName={props.images[3].creditName} 
-                        />
-                        </div>
-                    </Parallax>
-                </div> */}
             </div>
         </section>
-
-    )}
+    )
+}
 
 export default Park2

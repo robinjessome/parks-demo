@@ -57,7 +57,7 @@ if (props.align == 'right') {
     alignReverse = 'order-last'
 }
 
-let accentGradient, accentHr, textColor, activityText;
+let accentGradient, accentHr, textColor;
 if (props.accent) {
     accentGradient = accents[props.accent].gradient
     accentHr = accents[props.accent].hr
@@ -138,7 +138,6 @@ if (props.accent) {
                                 Learn more  
                                 <FontAwesomeIcon icon={faArrowRightLong} className="inline-block ml-2 group-hover:ml-3 transition-all relative top-[1px]"  />
                             </a>
-                            {/* <Button url={park.url} text="Learn More" target="_blank" /> */}
                         </div>
                     </Parallax>
 
@@ -164,43 +163,42 @@ if (props.accent) {
 
                     <Parallax
                         translateX={props.align == 'right' ? floatLeft : floatRight}
-                        >
+                    >
                         <div className="relative shadow-lg">
-                        <div className="hidden lg:block">
-                            <Image
-                                alt={props.images[3].alt}
-                                src={`${props.images[3].url}&q=90&w=800&h=500&fit=crop`}
-                                width={800}
-                                height={500}
-                                layout="responsive"
-                                placeholder="blur"
-                                blurDataURL={`${props.images[3].url}&q=20&w=80&h=50&fit=crop`}
+                            <div className="hidden lg:block">
+                                <Image
+                                    alt={props.images[3].alt}
+                                    src={`${props.images[3].url}&q=90&w=800&h=500&fit=crop`}
+                                    width={800}
+                                    height={500}
+                                    layout="responsive"
+                                    placeholder="blur"
+                                    blurDataURL={`${props.images[3].url}&q=20&w=80&h=50&fit=crop`}
+                                />
+                            </div>
+                            <div className="block lg:hidden">
+                                <Image
+                                    alt={props.images[3].alt}
+                                    src={`${props.images[3].url}&q=90&w=400&h=600&fit=crop`}
+                                    width={400}
+                                    height={600}
+                                    layout="responsive"
+                                    placeholder="blur"
+                                    blurDataURL={`${props.images[3].url}&q=20&w=30&h=60&fit=crop`}
+                                />
+                            </div>
+                            <InfoPop 
+                                title={props.images[3].alt} 
+                                creditUrl={props.images[3].creditUrl} 
+                                creditName={props.images[3].creditName} 
                             />
-                        </div>
-                        <div className="block lg:hidden">
-                            <Image
-                                alt={props.images[3].alt}
-                                src={`${props.images[3].url}&q=90&w=400&h=600&fit=crop`}
-                                width={400}
-                                height={600}
-                                layout="responsive"
-                                placeholder="blur"
-                                blurDataURL={`${props.images[3].url}&q=20&w=30&h=60&fit=crop`}
-                            />
-                        </div>
-                        <InfoPop 
-                            title={props.images[3].alt} 
-                            creditUrl={props.images[3].creditUrl} 
-                            creditName={props.images[3].creditName} 
-                        />
                         </div>
                     </Parallax>
                 </div>
 
                 <Container className={`mt-16 font-serif text-xl block md:hidden ${align} ${textColor}`}>
 
-                <div className="relative shadow-lg mb-16">
-
+                    <div className="relative shadow-lg mb-16">
                         <Image
                             alt={props.images[3].alt}
                             src={`${props.images[3].url}&q=90&w=800&h=800&fit=crop`}
@@ -210,7 +208,6 @@ if (props.accent) {
                             placeholder="blur"
                             blurDataURL={`${props.images[3].url}&q=20&w=40&h=40&fit=crop`}
                         />
-   
                         <InfoPop 
                             title={props.images[3].alt} 
                             creditUrl={props.images[3].creditUrl} 
@@ -228,10 +225,9 @@ if (props.accent) {
                     />
                 </Container>
 
-
             </div>
         </section>
-
-    )}
+    )
+}
 
 export default Park1

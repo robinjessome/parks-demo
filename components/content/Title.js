@@ -9,13 +9,6 @@ const Banner = styled(ParallaxBanner)`
     height: 100vh;
 `;
 
-// const Banner = styled.div`
-//     height: 100vh;
-//     background-image: url(${props => props.bgImage});
-//     background-size: cover;
-//     background-repeat: no-repeat;
-// `
-
 const HeadlineBase = styled.h1`
     color: #fff;
     text-shadow: 0 8px 33px rgba(0,0,0,0.25);
@@ -28,13 +21,6 @@ const HeadlineBase = styled.h1`
 `;
 
 const ScrollIndicator = styled(Parallax)``;
-
-/* 
-speed={##} 
-translateX={['50px','-50px']}
-rotate={[0, 360]
-*/
-
 
 function Title(props) {
 
@@ -57,7 +43,6 @@ function Title(props) {
                     speed={-4}
                     className="text-white bg-white bg-opacity-20 border-2 border-white rounded-full w-16 h-16 lg:w-24 lg:h-24 font-bold text-xl shadow-lg flex items-center justify-center"
                 >
-                    {/* <ArrowDownIcon className="h-8 w-8" /> */}
                     <FontAwesomeIcon icon={faArrowDown} className="w-6 h-6 lg:w-8 lg:h-8" />
                 </ScrollIndicator>
             </div>

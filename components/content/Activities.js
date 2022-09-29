@@ -1,7 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBicycle, faBinoculars, faCampground, faFish, faMoon, faPersonHiking, faPersonSkiing, faShip } from '@fortawesome/free-solid-svg-icons'
-import styled from 'styled-components'
-
+import { 
+    faBicycle, 
+    faBinoculars, 
+    faCampground, 
+    faFish, 
+    faMoon, 
+    faPersonHiking, 
+    faPersonSkiing, 
+    faShip 
+} from '@fortawesome/free-solid-svg-icons'
 
 function Activities(props) {
 
@@ -34,6 +41,8 @@ function Activities(props) {
                 let showActivity = false
                 let label = null
                 let icon = null
+
+                // park comes with a ton of activities, but I only care about a few: 
 
                 switch (activity.name) {
 
@@ -95,7 +104,6 @@ function Activities(props) {
                         >
                             <FontAwesomeIcon icon={icon} className="w-6 h-6" />
                             <span className="opacity-70">{label}</span>
-                        
                         </li>
                     )
                 }

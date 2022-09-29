@@ -1,13 +1,9 @@
-import { Parallax, ParallaxBanner } from 'react-scroll-parallax';
+import { Parallax } from 'react-scroll-parallax';
 import styled from 'styled-components'
 
 const Block = styled(Parallax)``;
 
-// const Block = styled.div``;
-
-
 function IntroBlock(props) {
-
     return (
         <section className="pb-12">
             <Block 
@@ -17,9 +13,7 @@ function IntroBlock(props) {
                 {props.children}
             </Block>
         </section>
-
     )
-
 }
 
 export default IntroBlock;

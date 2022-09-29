@@ -107,6 +107,7 @@ export async function getStaticProps() {
 
   /*
 
+  order received from API - ignores query order for some reason
 
   0: grand canyon
   1: Grand Teton
@@ -122,6 +123,8 @@ export async function getStaticProps() {
   */
 
 /*
+
+maybe use these ones?
 
 Great Smokey Mountains : grsm
 Zion National Park : zion
@@ -143,6 +146,8 @@ Petrified Forest : pefo
 
 */
 
+
+// Let's get all the parks - Axios since fetch() response 403s
   const parksKey = '&api_key=' + process.env.PARKS_API_KEY;
   const parkIds = '?parkCode=grsm,yell,grca,jotr,havo,zion,grte,yose' // no spaces
   const parksUrl = 'https://developer.nps.gov/api/v1/parks'
@@ -152,18 +157,14 @@ Petrified Forest : pefo
       return res.data;
     })
 
-
-    // console.log(allParks)
+  // console.log(allParks)
 
 
   // IMAGES
 
   const unsplashKey = '?client_id=' + process.env.UNSPLASH_KEY
   const unsplashUrl = 'https://api.unsplash.com/photos/'
-  // const collectionID = process.env.UNSPLASH_COLLECTION_ID
 
-  // &q=80&w=400
-  //utm_source=rj_parks&utm_medium=referral
 
   // HERO BANNER
   const heroBgId = 'qBbqAxyei3I'
@@ -176,7 +177,6 @@ Petrified Forest : pefo
     'creditName': bgHeroImageData.user.name,
     'creditUrl': bgHeroImageData.user.links.html,
   }
-
 
 
 /* BULK IMAGE FUNCTIONS */
@@ -198,6 +198,7 @@ async function getImage(id) {
   return imageData
 }
 
+// Pass an array of image IDs to get image data for all of 'em
 async function getImages(ids) {
   const withCoords = await Promise.all(ids.map(id => getImage(id)));
   return withCoords;
@@ -210,17 +211,17 @@ async function getImages(ids) {
 // Grid 
 
   const gridImageIds = [
-    'ICXB0_EV0KY', // Grand Canyon
-    '9SspnXLUOLg', // Joshua Tree
-    'GRaB7A1vzgA', // Yosemite
-    'Ge9gn7eU054' // Yellowstone
+    'ICXB0_EV0KY', 
+    '9SspnXLUOLg',
+    'GRaB7A1vzgA',
+    'Ge9gn7eU054'
   ]
 
   const gridImages = await getImages(gridImageIds).then(res => res);
 
 
 
-// Great Smokey Images 
+// Great Smokey 
   const grsmImageIDs = [
     'SZbSyPX3Lsk',
     'Vpxdb9vhqIQ',
@@ -236,7 +237,6 @@ async function getImages(ids) {
     'oN3U95O4cag',
     'Wny9v0ba1Us',
     'p67k6hPMDCs'
-
   ]
   const yellImages = await getImages(yellImageIds).then(res => res);
 
@@ -255,7 +255,6 @@ async function getImages(ids) {
   const jotrImageIds = [
     'pa1HK9M01l4',
     'aEj8TEQHztY',
-    // 'xLgqS5honO0',
     'FZlXXz5vlSs',
     '0oeFUCb9txg'
   ]
@@ -336,9 +335,8 @@ async function getImages(ids) {
       grteImages,
       yoseImages,
       romoImages
-    },
+    }
   }
-
 }
 
 
