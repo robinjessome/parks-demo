@@ -131,12 +131,12 @@ if (props.accent) {
                             <p className="text-xl md:text-2xl mb-6">{park.description.replace('Daily updates >', '')}</p>
                             <a 
                                 href={park.url}
-                                className="group transition text-lg flex items-center"
+                                className="group transition text-lg"
                                 target="_blank" 
                                 rel="noreferrer"
                             >
                                 Learn more  
-                                <FontAwesomeIcon icon={faArrowRightLong} className="inline-block ml-2 w-5 group-hover:ml-3 transition-all"  />
+                                <FontAwesomeIcon icon={faArrowRightLong} className="inline-block ml-2 w-5 group-hover:ml-3 transition-all relative top-[-1px]"  />
                             </a>
                         </div>
                     </Parallax>
