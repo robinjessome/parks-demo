@@ -78,14 +78,15 @@ if (props.accent) {
                 <Container>
                     <div className="font-serif max-w-4xl mx-auto text-center">
                         <p className="text-xl lg:text-2xl mb-6">{park.description}</p>
-                        <p> <a 
+                        <p>                  
+                            <a 
                                 href={park.url}
-                                className="group transition text-lg"
+                                className="group transition text-lg flex items-center"
                                 target="_blank" 
                                 rel="noreferrer"
                             >
                                 Learn more  
-                                <FontAwesomeIcon icon={faArrowRightLong} className="inline-block ml-2 group-hover:ml-3 transition-all relative top-[1px]"  />
+                                <FontAwesomeIcon icon={faArrowRightLong} className="inline-block ml-2 w-5 group-hover:ml-3 transition-all"  />
                             </a>
                         </p>
                     </div>
